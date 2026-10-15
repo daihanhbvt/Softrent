@@ -71,7 +71,7 @@ const vi = {
       body: "Chúng tôi tập trung vào việc nghiên cứu và phát triển các sản phẩm công nghệ (Web, Mobile App, Hệ thống quản lý) giúp giải quyết các bài toán thực tiễn của doanh nghiệp và người dùng. Tại Softrent, \"Sáng tạo - Hiệu quả - Tận tâm\" là kim chỉ nam trong mọi dự án",
     },
     services: {
-      label: "Our Services",
+      label: "Dịch vụ của chúng tôi",
       title: "Lĩnh vực hoạt động",
       description:
         "Softrent đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, từ thiết kế trải nghiệm người dùng đến phát triển các sản phẩm công nghệ hiện đại. Chúng tôi tập trung xây dựng những giải pháp tối ưu, linh hoạt và sẵn sàng mở rộng theo nhu cầu thực tế.",
@@ -96,11 +96,11 @@ const vi = {
       title: "XePrime – Giải pháp thuê xe linh hoạt cho mọi hành trình",
       description:
         "**XePrime** là dự án được phát triển bởi **Softrent**, hướng đến việc đơn giản hóa trải nghiệm thuê xe thông qua nền tảng công nghệ hiện đại. Kết nối người có nhu cầu thuê xe với các đơn vị cho thuê và chủ xe, XePrime mang đến quy trình tìm kiếm, đặt xe và quản lý chuyến đi thuận tiện, minh bạch và linh hoạt hơn.",
-      cta: "Tìm hiểu Xeprime",
+      cta: "Tìm hiểu XePrime",
       imageAlt: "Giao diện nền tảng thuê xe XePrime trên máy tính",
     },
     why: {
-      label: "Why Choose Us",
+      label: "Vì sao chọn chúng tôi",
       title: "Lý do nên chọn Softrent",
       items: [
         { title: "Công nghệ tiên phong", description: "Áp dụng các framework mới nhất,\nhiện đại nhất" },
@@ -183,7 +183,7 @@ const vi = {
   },
   contact: {
     info: {
-      addressTitle: "Address",
+      addressTitle: "Địa chỉ",
       contactTitle: "Liên hệ",
       phoneLabel: "Điện thoại:",
       emailLabel: "Email:",
@@ -192,7 +192,7 @@ const vi = {
       socialTitle: "Kết nối với chúng tôi",
     },
     form: {
-      label: "Contact Us",
+      label: "Liên hệ với chúng tôi",
       title: "Gửi yêu cầu tư vấn",
       description: "Để lại thông tin liên hệ của bạn, chúng tôi sẽ liên hệ trong thời gian sớm nhất!",
       name: { label: "Họ và tên", placeholder: "Nhập họ và tên" },
