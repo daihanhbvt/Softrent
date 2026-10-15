@@ -1,0 +1,27 @@
+# Khối site của softrent.vn cho Caddy của XePrime (Caddyfile bên đó `import /etc/caddy/sites/*.caddy`).
+# `deploy/deploy.sh` chép file này lên VPS, chạy `caddy validate` rồi mới `caddy reload`.
+#
+# TỰ CHỨA: không dùng snippet của Caddyfile XePrime — đổi bên đó không được làm vỡ site này.
+#
+# Điều kiện: bản ghi A của `softrent.vn` và `www.softrent.vn` trỏ về IP VPS, chế độ DNS only (mây
+# xám), TRƯỚC khi file này được nạp — Caddy xin chứng chỉ Let's Encrypt qua HTTP-01 ngay lúc đó.
+
+www.softrent.vn {
+	redir https://softrent.vn{uri} permanent
+}
+
+softrent.vn {
+	encode zstd gzip
+
+	header {
+		# Không `includeSubDomains`: nó ép MỌI subdomain softrent.vn (kể cả cái chưa có HTTPS) chỉ
+		# đi HTTPS trong một năm, và không thu hồi được từ phía server.
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+		-X-Powered-By
+	}
+
+	reverse_proxy softrent:3000
+}

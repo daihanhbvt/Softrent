@@ -1,0 +1,47 @@
+# softrent.vn trên VPS dùng chung với XePrime.
+#
+# Hai dự án ĐỘC LẬP trên một máy: XePrime giữ cổng 80/443 bằng Caddy của nó; site này chỉ là một
+# container trên mạng `xeprime-sites` mà Caddy đó cũng tham gia. Caddy nhận khối site từ
+# `deploy/softrent.caddy` (do `deploy/deploy.sh` cài vào `deploy/sites/` của XePrime) rồi
+# `reverse_proxy softrent:3000`.
+#
+# Container này KHÔNG publish cổng ra host, và KHÔNG ở mạng nội bộ của XePrime — nó không thấy
+# Postgres hay API, chỉ Caddy thấy nó.
+
+name: softrent
+
+services:
+  # Tên service là tên DNS trên mạng `xeprime-sites`. KHÔNG đặt `web`/`api`/`db`/`worker`/`caddy`:
+  # Caddy của XePrime đứng trên cả hai mạng và gọi `web:3000`, `api:4000` — trùng tên là Docker có
+  # thể trả về container này cho các lời gọi đó.
+  softrent:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: https://softrent.vn
+    image: softrent-web:latest
+    restart: unless-stopped
+    healthcheck:
+      # Image slim không có curl; `fetch` có sẵn trong Node.
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/vi').then(r => process.exit(r.ok ? 0 : 1), () => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    mem_limit: 384m
+    logging:
+      driver: json-file
+      options: { max-size: 10m, max-file: '3' }
+    networks: [edge]
+
+networks:
+  # Do docker-compose.prod.yml của XePrime tạo. Thiếu nó nghĩa là VPS chưa chạy bản XePrime có
+  # móc "site ngoài" (docs/deployment.md §10 bên repo XePrime).
+  edge:
+    name: xeprime-sites
+    external: true
