@@ -32,6 +32,9 @@ SSH=(ssh -i "$KEY" -o BatchMode=yes "$HOST")
 
 log() { printf '\n\033[1;36m==> %s\033[0m\n' "$*"; }
 fail() { printf '\n\033[1;31m✗ %s\033[0m\n' "$*" >&2; exit 1; }
+# Lệnh nào gãy ngoài `fail` (ssh, tar, docker…) cũng phải để lại một dòng nói gãy ở đâu — không thì
+# `set -e` thoát im lặng, và lọc log bằng grep là mất luôn manh mối.
+trap 'printf "\n\033[1;31m✗ Dừng ở dòng %s của deploy.sh (mã %s) — xem log phía trên.\033[0m\n" "$LINENO" "$?" >&2' ERR
 
 REV="$(git rev-parse --short HEAD)"
 [ -z "$(git status --porcelain)" ] || REV="$REV-dirty"
@@ -51,6 +54,7 @@ log 'Build + khởi động trên VPS'
 set -euo pipefail
 log() { printf '\n\033[1;36m--> %s\033[0m\n' "$*"; }
 fail() { printf '\n\033[1;31m✗ %s\033[0m\n' "$*" >&2; exit 1; }
+trap 'printf "\n\033[1;31m✗ VPS: dừng ở dòng %s của bước từ xa (mã %s).\033[0m\n" "$LINENO" "$?" >&2' ERR
 
 # Thay NGUYÊN thư mục: file đã xoá ở máy dev cũng phải biến mất ở đây. Container đang chạy không
 # phụ thuộc thư mục này (nó chạy từ image), nên build hỏng thì site cũ vẫn sống.
