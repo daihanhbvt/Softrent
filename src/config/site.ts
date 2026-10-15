@@ -5,8 +5,8 @@
  * chưa được Softrent xác nhận chính thức. Cập nhật tại đây khi có hồ sơ pháp lý/thông tin chính thức.
  */
 
-/** URL production — đặt NEXT_PUBLIC_SITE_URL khi deploy. PENDING: tên miền chính thức. */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://softrent.asia").replace(/\/$/, "");
+/** URL production — `NEXT_PUBLIC_SITE_URL` ghi đè khi cần (vd môi trường thử). */
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://softrent.vn").replace(/\/$/, "");
 
 export const siteName = "Softrent";
 
