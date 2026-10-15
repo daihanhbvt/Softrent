@@ -7,6 +7,7 @@ import { ThemeSync } from "@/components/layout/ThemeSync";
 import { siteName, siteUrl } from "@/config/site";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildSiteJsonLd, serializeJsonLd } from "@/lib/structured-data";
 import { themeInitScript } from "@/lib/theme";
 import "../globals.css";
 
@@ -58,6 +59,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     <html lang={locale} className={googleSans.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildSiteJsonLd(locale)) }} />
       </head>
       <body className="flex min-h-dvh flex-col">
         <ThemeSync />
