@@ -19,8 +19,7 @@ export const contactInfo = {
   /** PENDING */
   phone: "0352 063 205",
   phoneHref: "tel:+84352063205",
-  /** PENDING */
-  email: "admin@softrent.asia",
+  email: "admin@softrent.vn",
   /** Truy vấn dùng cho bản đồ nhúng. PENDING: cập nhật toạ độ chính xác. */
   mapQuery: "133 Trung Lương 11, Hòa Xuân, Đà Nẵng, Việt Nam",
 } as const;
