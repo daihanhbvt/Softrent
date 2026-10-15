@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* Dark mode điều khiển bằng thuộc tính data-theme trên <html> (xem ThemeScript). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ===== Design tokens ===== */
+:root {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-soft: #f5f8fc;      /* hero các trang */
+  --bg-subtle: #fafafa;    /* section "Lý do nên chọn" */
+  --bg-tint: #f3f6fb;      /* thông tin pháp lý */
+  --bg-muted: #fcfcfd;     /* section tầm nhìn/giá trị */
+  --bg-feature-from: #eaf2fb;
+  --bg-feature-to: #f2f7fd;
+  --surface: #ffffff;
+  --surface-soft: #f8faff;
+
+  --fg: #101828;
+  --fg-body: #4b5563;
+  --fg-muted: #6b7280;
+  --fg-subtle: #9ca3af;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-fg: #ffffff;
+  --primary-soft: #eef3fe;
+  --primary-text: #2563eb;
+  --label-bar: #93b4f5;
+
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --border-accent: #93b4f5;
+
+  --footer-bg: #000a3a;
+  --footer-fg: #ffffff;
+  --footer-muted: #a6abc4;
+  --footer-border: #1b2453;
+
+  --contact-card-from: #020b3d;
+  --contact-card-via: #12329e;
+  --contact-card-to: #2f6cf0;
+
+  --danger: #dc2626;
+  --success: #15803d;
+  --success-soft: #ecfdf3;
+  --danger-soft: #fef2f2;
+
+  --ring: #2563eb;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 6px 24px rgb(16 24 40 / 0.05);
+  --shadow-image: 0 12px 32px rgb(16 24 40 / 0.12);
+  --shadow-glow: 0 6px 20px rgb(37 99 235 / 0.18);
+}
+
+/* data-theme được ThemeScript đặt trước lần vẽ đầu tiên, theo lựa chọn đã lưu hoặc thiết lập hệ điều hành. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0a0f1e;
+  --bg-soft: #0f1629;
+  --bg-subtle: #0c1222;
+  --bg-tint: #0f1629;
+  --bg-muted: #0b1020;
+  --bg-feature-from: #0f1a33;
+  --bg-feature-to: #0c1426;
+  --surface: #131c31;
+  --surface-soft: #111a2e;
+
+  --fg: #f1f5f9;
+  --fg-body: #cbd5e1;
+  --fg-muted: #a3afc2;
+  --fg-subtle: #7b879b;
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-fg: #ffffff;
+  --primary-soft: rgb(59 130 246 / 0.16);
+  --primary-text: #6ea2f8;
+  --label-bar: #3b6fd6;
+
+  --border: #222c42;
+  --border-strong: #334057;
+  --border-accent: #2f5bb8;
+
+  --footer-bg: #020617;
+  --footer-fg: #f8fafc;
+  --footer-muted: #94a0b8;
+  --footer-border: #1a2238;
+
+  --danger: #f87171;
+  --success: #4ade80;
+  --success-soft: rgb(74 222 128 / 0.1);
+  --danger-soft: rgb(248 113 113 / 0.1);
+
+  --ring: #60a5fa;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 24px rgb(0 0 0 / 0.25);
+  --shadow-image: 0 12px 32px rgb(0 0 0 / 0.4);
+  --shadow-glow: 0 6px 20px rgb(59 130 246 / 0.25);
+}
+
+@theme inline {
+  --font-sans: var(--font-google-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-tint: var(--bg-tint);
+  --color-bg-muted: var(--bg-muted);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-fg: var(--fg);
+  --color-fg-body: var(--fg-body);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-text: var(--primary-text);
+  --color-label-bar: var(--label-bar);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-accent: var(--border-accent);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-fg: var(--footer-fg);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-border: var(--footer-border);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-ring: var(--ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-image: var(--shadow-image);
+  --shadow-glow: var(--shadow-glow);
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Layout helpers ===== */
+@utility container-site {
+  width: 100%;
+  max-width: calc(1200px + 2 * var(--gutter, 16px));
+  margin-inline: auto;
+  padding-inline: var(--gutter, 16px);
+  @media (width >= 48rem) {
+    --gutter: 24px;
+  }
+}
+
+/* Chữ xanh có quầng sáng nhẹ (tiêu đề trang About theo thiết kế) */
+@utility text-glow {
+  text-shadow: 0 6px 18px rgb(37 99 235 / 0.22);
+}
+
+/* Nền thẻ liên hệ: gradient navy → xanh và các vệt sáng như thiết kế */
+@utility bg-contact-card {
+  background:
+    radial-gradient(60% 6% at 30% 4%, rgb(120 190 255 / 0.55), transparent 70%),
+    radial-gradient(40% 4% at 78% 92%, rgb(140 200 255 / 0.5), transparent 70%),
+    radial-gradient(70% 45% at 40% 55%, rgb(70 120 255 / 0.35), transparent 70%),
+    linear-gradient(170deg, var(--contact-card-from) 0%, var(--contact-card-from) 22%, var(--contact-card-via) 52%, var(--contact-card-to) 100%);
+}
+
+/* Ảnh hero có nền sáng: làm mờ mép trái để hoà vào nền section; ở dark mode thu gọn thành vùng sáng mềm. */
+.hero-art-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+}
+:root[data-theme="dark"] .hero-art-fade {
+  opacity: 0.85;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+}
