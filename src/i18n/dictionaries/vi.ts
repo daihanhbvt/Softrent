@@ -19,6 +19,11 @@ const vi = {
       description:
         "Chia sẻ nhu cầu hoặc ý tưởng của bạn để đội ngũ Softrent có thể tìm hiểu và tư vấn hướng tiếp cận phù hợp.",
     },
+    careers: {
+      title: "Tuyển dụng",
+      description:
+        "Cơ hội nghề nghiệp tại Softrent, Đà Nẵng: lộ trình đào tạo bài bản, tham gia trực tiếp các dự án product và phát triển lâu dài cùng công ty.",
+    },
   },
   common: {
     skipToContent: "Bỏ qua để đến nội dung chính",
@@ -31,6 +36,7 @@ const vi = {
     about: "Về Softrent",
     aboutUs: "Về chúng tôi",
     platform: "Nền tảng",
+    careers: "Tuyển dụng",
     contact: "Liên hệ",
   },
   header: {
@@ -225,6 +231,54 @@ const vi = {
         messageRequired: "Vui lòng nhập nội dung yêu cầu.",
         consentRequired: "Vui lòng đồng ý để chúng tôi xử lý thông tin.",
       },
+    },
+  },
+  careers: {
+    hero: {
+      title: "Gia nhập",
+      highlight: "Softrent",
+      description:
+        "Cùng Softrent học hỏi, trưởng thành và phát triển trong lĩnh vực công nghệ.\nXem các vị trí đang mở và gửi CV cho chúng tôi.",
+      breadcrumb: "Tuyển dụng",
+    },
+    list: {
+      label: "Vị trí đang tuyển",
+      title: "Các vị trí đang mở",
+      empty: "Hiện Softrent chưa mở vị trí nào. Bạn vẫn có thể gửi CV về email bên dưới để chúng tôi liên hệ khi có vị trí phù hợp.",
+      viewDetail: "Xem chi tiết",
+    },
+    detail: {
+      heroTitle: "Tuyển dụng",
+      backToList: "Tất cả vị trí",
+    },
+    facts: {
+      title: "Thông tin chung",
+      position: "Vị trí",
+      openings: "Số lượng",
+      location: "Địa điểm làm việc",
+      audience: "Đối tượng",
+      allowance: "Hỗ trợ thực tập",
+      allowanceValue: "{amount} VNĐ/tháng",
+      schedule: "Thời gian làm việc",
+      path: "Lộ trình",
+    },
+    sections: {
+      responsibilities: "Mô tả công việc",
+      training: "Lộ trình đào tạo",
+      requirements: "Yêu cầu ứng viên",
+      basic: "Yêu cầu cơ bản",
+      niceToHave: "Điểm cộng",
+      note: "Lưu ý:",
+      benefits: "Quyền lợi",
+    },
+    apply: {
+      title: "Cách thức ứng tuyển",
+      lead: "Ứng viên vui lòng gửi CV về:",
+      email: "Email",
+      subject: "Tiêu đề email",
+      subjectPattern: "[{tag}] - Họ và tên",
+      button: "Gửi CV qua email",
+      closing: "**SOFTRENT** – Cùng bạn học hỏi, trưởng thành và phát triển trong lĩnh vực công nghệ!",
     },
   },
   notFound: {

@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
-import { sitePages } from "@/config/navigation";
+import { jobPath, sitePages, type SitePath } from "@/config/navigation";
 import { siteUrl } from "@/config/site";
+import { jobs } from "@/content/careers";
 import { locales, localizePath } from "@/i18n/config";
 import { languageAlternates } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return sitePages.flatMap((page) =>
+  const pages: SitePath[] = [...sitePages, ...jobs.map((job) => jobPath(job.slug))];
+
+  return pages.flatMap((page) =>
     locales.map((locale) => ({
       url: `${siteUrl}${localizePath(locale, page)}`,
       changeFrequency: "monthly" as const,

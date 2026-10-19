@@ -20,7 +20,8 @@ export function NavLinks({ locale, labels, layout, onNavigate }: NavLinksProps) 
   return (
     <ul className={layout === "desktop" ? "flex items-center gap-8" : "flex flex-col gap-1"}>
       {mainNav.map(({ key, href, withIcon }) => {
-        const active = href === current;
+        // Trang con (vd /careers/intern-qc) vẫn làm sáng mục cha của nó.
+        const active = href === current || (href !== "/" && current.startsWith(`${href}/`));
         return (
           <li key={key}>
             <Link

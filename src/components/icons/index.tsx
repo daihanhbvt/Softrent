@@ -44,6 +44,15 @@ export const socialIcons: Record<SocialKey, (props: IconProps) => React.JSX.Elem
   tiktok: TiktokIcon,
 };
 
+/** Mũi tên sang phải; xoay `rotate-180` để thành mũi tên quay lại. */
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" {...base} {...props}>
+      <path d="M4 10h12m-5-5 5 5-5 5" />
+    </svg>
+  );
+}
+
 export function ChevronDownIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" {...base} {...props}>

@@ -19,6 +19,11 @@ const en: Dictionary = {
       description:
         "Share your needs or ideas so the Softrent team can understand them and advise on the right approach.",
     },
+    careers: {
+      title: "Careers",
+      description:
+        "Careers at Softrent, Da Nang: structured training, hands-on product projects and long-term growth with the company.",
+    },
   },
   common: {
     skipToContent: "Skip to main content",
@@ -31,6 +36,7 @@ const en: Dictionary = {
     about: "About Softrent",
     aboutUs: "About us",
     platform: "Platform",
+    careers: "Careers",
     contact: "Contact",
   },
   header: {
@@ -225,6 +231,54 @@ const en: Dictionary = {
         messageRequired: "Please describe your request.",
         consentRequired: "Please agree to the processing of your information.",
       },
+    },
+  },
+  careers: {
+    hero: {
+      title: "Join",
+      highlight: "Softrent",
+      description:
+        "Learn, grow and build your career in technology with Softrent.\nBrowse our open positions and send us your CV.",
+      breadcrumb: "Careers",
+    },
+    list: {
+      label: "Open positions",
+      title: "Current openings",
+      empty: "Softrent has no open positions right now. You can still send your CV to the email below and we will get in touch when a suitable role opens.",
+      viewDetail: "View details",
+    },
+    detail: {
+      heroTitle: "Now hiring:",
+      backToList: "All positions",
+    },
+    facts: {
+      title: "Overview",
+      position: "Position",
+      openings: "Openings",
+      location: "Location",
+      audience: "Who can apply",
+      allowance: "Internship allowance",
+      allowanceValue: "VND {amount}/month",
+      schedule: "Working time",
+      path: "Career path",
+    },
+    sections: {
+      responsibilities: "What you will do",
+      training: "Training path",
+      requirements: "Requirements",
+      basic: "Must have",
+      niceToHave: "Nice to have",
+      note: "Note:",
+      benefits: "Benefits",
+    },
+    apply: {
+      title: "How to apply",
+      lead: "Please send your CV to:",
+      email: "Email",
+      subject: "Email subject",
+      subjectPattern: "[{tag}] - Your full name",
+      button: "Send your CV by email",
+      closing: "**SOFTRENT** – Learning, growing and developing in technology, together with you!",
     },
   },
   notFound: {

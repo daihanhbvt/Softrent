@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import { siteName, siteUrl } from "@/config/site";
-import type { SitePage } from "@/config/navigation";
+import type { SitePath } from "@/config/navigation";
 import { defaultLocale, localeLabels, locales, localizePath, type Locale } from "@/i18n/config";
 
 /** Bản đồ hreflang cho một trang: { vi: "/vi/about", en: "/en/about", "x-default": "/vi/about" }. */
-export function languageAlternates(page: SitePage): Record<string, string> {
+export function languageAlternates(page: SitePath): Record<string, string> {
   const entries = locales.map((l) => [l, localizePath(l, page)] as const);
   return { ...Object.fromEntries(entries), "x-default": localizePath(defaultLocale, page) };
 }
 
 interface PageMetaInput {
   locale: Locale;
-  page: SitePage;
+  page: SitePath;
   title: string;
   description: string;
   /** Trang chủ dùng title đầy đủ, không ghép template. */
