@@ -13,8 +13,14 @@ export function proxy(request: NextRequest) {
   const hasPrefix = locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
   if (hasPrefix) return;
 
+  const locale = resolveLocale(request);
   const url = request.nextUrl.clone();
-  url.pathname = `/${resolveLocale(request)}${pathname === "/" ? "" : pathname}`;
+  url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+
+  // Trang chủ tiếng Việt được PHỤC VỤ NGAY tại gốc tên miền (rewrite, URL giữ nguyên) thay vì chuyển
+  // hướng sang /vi: Google chỉ lấy favicon và tên site từ trang chủ ở gốc tên miền, và "/" là địa chỉ
+  // chính (canonical) của trang chủ tiếng Việt — xem `canonicalPath` ở src/lib/metadata.ts.
+  if (pathname === "/" && locale === defaultLocale) return NextResponse.rewrite(url);
   return NextResponse.redirect(url);
 }
 

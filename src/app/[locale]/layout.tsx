@@ -40,10 +40,13 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     title: { default: siteName, template: `%s | ${siteName}` },
     description: dict.meta.siteDescription,
     applicationName: siteName,
+    // Google Search không nhận SVG và cần ảnh vuông > 48px → ICO + PNG 192 đứng trước; trình duyệt vẫn
+    // chọn SVG cho tab. Sinh lại ICO/PNG từ icon.svg: `node scripts/generate-favicons.mjs`.
     icons: {
       icon: [
+        { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+        { url: "/icon.png", type: "image/png", sizes: "192x192" },
         { url: "/icon.svg", type: "image/svg+xml" },
-        { url: "/icon.png", type: "image/png", sizes: "64x64" },
       ],
       apple: "/apple-icon.png",
     },

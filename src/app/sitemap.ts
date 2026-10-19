@@ -2,15 +2,15 @@ import type { MetadataRoute } from "next";
 import { jobPath, sitePages, type SitePath } from "@/config/navigation";
 import { siteUrl } from "@/config/site";
 import { jobs } from "@/content/careers";
-import { locales, localizePath } from "@/i18n/config";
-import { languageAlternates } from "@/lib/metadata";
+import { locales } from "@/i18n/config";
+import { canonicalPath, languageAlternates } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: SitePath[] = [...sitePages, ...jobs.map((job) => jobPath(job.slug))];
 
   return pages.flatMap((page) =>
     locales.map((locale) => ({
-      url: `${siteUrl}${localizePath(locale, page)}`,
+      url: `${siteUrl}${canonicalPath(locale, page)}`,
       changeFrequency: "monthly" as const,
       priority: page === "/" ? 1 : 0.8,
       alternates: {
